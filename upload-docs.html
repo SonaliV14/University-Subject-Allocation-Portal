@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload-documents</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style> 
+     * {
+         box-sizing: border-box;
+     }
+     body {
+         font-family: "Poppins", sans-serif;
+     }
+    .boxx {
+        padding: 20px;
+        float: left;
+        width: 31%;
+        height: 510px;
+        background-color: #d0d4d8;
+        border:2px solid rgb(26, 26, 57);
+        margin: 8px;
+    }
+
+    #box1{
+        margin-left: 20px;
+    }
+    .head {
+        font-weight: bold;
+        padding-left: 110px;
+        margin-bottom: 10px;
+    }
+
+    .format-msg {
+        font-size: small;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .img {
+         margin-top: 20px;
+        height: 320px;
+        width: 280px;
+        margin-left: 20px;
+        align-items: center;
+    }
+
+    .button {
+         width: 100px;
+        height: 30px;
+        background: dodgerblue;
+        border-radius: 4px;
+        transition: all .3s cubic-bezier(0.67, 0.17, 0.40, 0.83);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+        margin-left: 110px;
+        color: beige;
+    }
+
+    .button:hover {
+        cursor: pointer;
+        background-color: rgb(18, 98, 178);
+    }
+
+    .error-message {
+        color: red;
+        margin-top: -60px;
+        margin-bottom: 10px;
+        text-align: center;
+        margin-right: 30px;
+    }
+
+    .boxx.submitted .error-message {
+        display: none;
+    }
+      
+      .boxx.submitted input[type="file"] {
+        border: none;
+        box-shadow: none;
+    }
+
+    .button.uploaded {
+         background: green;
+         text-align: center;
+         align-items: center;
+    }
+
+    .button.uploaded:before {
+        margin-right: 5px;
+    }
+
+    .checkbox {
+        text-align: justify;
+        font-size: small;
+        margin: 50px;
+    }
+
+    .check:hover {
+        cursor: pointer;
+    }
+
+    .check {
+        display: inline;
+        margin-top: 50px;
+     }
+
+    .btn-class {
+        text-align: center;
+        margin-right: 40px;
+    }
+
+    #savebtn {
+        background-color: rgb(20, 41, 62);
+        color: beige;
+        border: none;
+        border-radius: 4px;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      
+    #savebtn:hover {
+        background-color: rgb(51, 114, 44);
+    }
+
+    .error-box {
+        border: 2px solid red;
+    }
+
+    #success-message{
+        text-align: center;
+        font-size: 14px;
+        padding: 0 0 0;
+    }
+
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h2>Please upload the following documents-</h2>
+    </div>
+    <div class="container">
+        <div id="box1" class="boxx">
+            <label class="head" for="myfile">Photo:</label><br>
+            <div class="format-msg">(It should be in jpeg/jpg/png format. The size should be between 200Kb to 600Kb.)
+            </div>
+            <input type="file" id="photo" onchange="loadFile1(event)" accept=".jpeg, .jpg, .png">
+            <img class="img" id="output1">
+            <div class="button" id="submit1">Submit</span></div>
+            <div class="error-message" id="error1"></div>
+        </div>
+        <div id="box2" class="boxx">
+            <label class="head" for="myfile2">Signature</label><br>
+            <div class="format-msg">(It should be in jpeg/jpg/png format. The size should be between 200Kb to 600Kb.)
+            </div>
+            <input type="file" id="sign" onchange="loadFile2(event)" accept=".jpeg, .jpg, .png">
+            <img class="img" id="output2">
+            <div class="button" id="submit2">Submit</div>
+            <div class="error-message" id="error2"></div>
+        </div>
+        <div id="box3" class="boxx">
+            <label class="head" for="myfile3">Admission Card:</label><br>
+            <div class="format-msg">(It should be in jpeg/jpg/png format. The size should be between 200Kb to 600Kb.)
+            </div>
+            <input type="file" id="admsncard" onchange="loadFile3(event)" accept=".jpeg, .jpg, .png">
+            <img class="img" id="output3">
+            <div class="button" id="submit3">Submit</div>
+            <div class="error-message" id="error3"></div>
+        </div>
+    </div>
+    <div id="success-message" style="color: green;"></div>
+    <div class="checkbox">
+        <input type="checkbox" class="check" name="checkbox" id="agreeCheckbox">
+        <p class="check">I confirm that the uploaded documents are genuine and belong to me. I acknowledge that any misrepresentation may lead to consequences as per the university policies.</p>
+        <br>
+        <span class="error-message" id="errorCheckbox"></span>
+    </div>
+    
+    <div class="btn-class">
+        <button type="button" id="savebtn" class="lowerbtn">Save</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Function to load file and display preview
+            function loadFile1(event) {
+                var output1 = document.getElementById('output1');
+                output1.src = URL.createObjectURL(event.target.files[0]);
+                document.getElementById('error1').innerHTML = '';
+                document.getElementById('submit1').classList.remove('uploaded');
+            }
+        
+            function loadFile2(event) {
+                var output2 = document.getElementById('output2');
+                output2.src = URL.createObjectURL(event.target.files[0]);
+                document.getElementById('error2').innerHTML = '';
+                document.getElementById('submit2').classList.remove('uploaded');
+            }
+        
+            function loadFile3(event) {
+                var output3 = document.getElementById('output3');
+                output3.src = URL.createObjectURL(event.target.files[0]);
+                document.getElementById('error3').innerHTML = '';
+                document.getElementById('submit3').classList.remove('uploaded');
+            }
+        
+            // Add event listeners to validate file inputs before submitting
+            document.getElementById('submit1').addEventListener('click', function () {
+                var photo = document.getElementById('photo').files[0];
+                if (!photo) {
+                    document.getElementById('error1').innerHTML = 'No file selected!';
+                    return;
+                }
+        
+                var fileSize = photo.size; // Get file size in bytes
+                var maxSize = 600 * 1024; // 600 KB in bytes
+                var minSize = 200 * 1024; // 200 KB in bytes
+                if (fileSize < minSize || fileSize > maxSize) {
+                    document.getElementById('error1').innerHTML = 'File size should be between 200KB and 600KB!';
+                    return;
+                }
+        
+                document.getElementById('error1').innerHTML = '';
+                document.getElementById('submit1').classList.add('uploaded');
+                document.getElementById('submit1').innerHTML = '<i class="fa fa-check"></i>';
+            });
+        
+            document.getElementById('submit2').addEventListener('click', function () {
+                var sign = document.getElementById('sign').files[0];
+                if (!sign) {
+                    document.getElementById('error2').innerHTML = 'No file selected!';
+                    return;
+                }
+        
+                var fileSize = sign.size; // Get file size in bytes
+                var maxSize = 600 * 1024; // 600 KB in bytes
+                var minSize = 200 * 1024; // 200 KB in bytes
+                if (fileSize < minSize || fileSize > maxSize) {
+                    document.getElementById('error2').innerHTML = 'File size should be between 200KB and 600KB!';
+                    return;
+                }
+        
+                document.getElementById('error2').innerHTML = '';
+                document.getElementById('submit2').classList.add('uploaded');
+                document.getElementById('submit2').innerHTML = '<i class="fa fa-check"></i>';
+            });
+        
+            document.getElementById('submit3').addEventListener('click', function () {
+                var adcard = document.getElementById('admsncard').files[0];
+                if (!adcard) {
+                    document.getElementById('error3').innerHTML = 'No file selected!';
+                    return;
+                }
+        
+                var fileSize = adcard.size; // Get file size in bytes
+                var maxSize = 600 * 1024; // 600 KB in bytes
+                var minSize = 200 * 1024; // 200 KB in bytes
+                if (fileSize < minSize || fileSize > maxSize) {
+                    document.getElementById('error3').innerHTML = 'File size should be between 200KB and 600KB!';
+                    return;
+                }
+        
+                document.getElementById('error3').innerHTML = '';
+                document.getElementById('submit3').classList.add('uploaded');
+                document.getElementById('submit3').innerHTML = '<i class="fa fa-check"></i>';
+            });
+        
+            document.getElementById('photo').addEventListener('change', loadFile1);
+            document.getElementById('sign').addEventListener('change', loadFile2);
+            document.getElementById('admsncard').addEventListener('change', loadFile3);
+        
+            // Add a click event listener to the save button
+            document.getElementById('savebtn').addEventListener('click', function () {
+                // Check if the checkbox is checked
+                var agreeCheckbox = document.getElementById('agreeCheckbox');
+                if (!agreeCheckbox.checked) {
+                    // If checkbox is not checked, display an error message
+                    document.getElementById('errorCheckbox').innerHTML = 'Please agree to the self-declaration!';
+                    return;
+                } else {
+                    // If checkbox is checked, clear the error message
+                    document.getElementById('errorCheckbox').innerHTML = '';
+                }
+        
+                // Get the file inputs
+                var photo = document.getElementById('photo').files[0];
+                var sign = document.getElementById('sign').files[0];
+                var admissioncard = document.getElementById('admsncard').files[0];
+        
+                // Check if any of the file inputs are empty
+                if (!photo || !sign || !admissioncard) {
+                    // If any of the file inputs are empty, display an error message
+                    if (!photo) {
+                        document.getElementById('error1').innerHTML = 'Please select a file!';
+                    }
+                    if (!sign) {
+                        document.getElementById('error2').innerHTML = 'Please select a file!';
+                    }
+                    if (!admissioncard) {
+                        document.getElementById('error3').innerHTML = 'Please select a file!';
+                    }
+                    return;
+                }
+        
+                // Clear error messages
+                document.getElementById('error1').innerHTML = '';
+                document.getElementById('error2').innerHTML = '';
+                document.getElementById('error3').innerHTML = '';
+        
+                // Prepare FormData object to send files via AJAX
+                var formData = new FormData();
+                formData.append('photo', photo);
+                formData.append('sign', sign);
+                formData.append('admsncard', admissioncard);
+        
+                // Send AJAX request
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'upload-docs.php', true);
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        // Handle successful response
+                        document.getElementById('success-message').innerText = xhr.responseText;
+                    } else {
+                        // Handle error
+                        console.error('Error:', xhr.statusText);
+                    }
+                };
+                xhr.onerror = function () {
+                    // Handle network error
+                    console.error('Network Error');
+                };
+                xhr.send(formData);
+            });
+        });
+        
+    </script>
+</body>
+
+</html>

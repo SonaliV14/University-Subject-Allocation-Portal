@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+*{
+    font-family: 'Montserrat', sans-serif; user-select: none;
+    padding: 0; margin: 0; box-sizing: border-box;
+}
+body {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: flex-start; 
+    background: #b0dfc0;
+    overflow-y: auto; 
+}
+
+.upper {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    text-align: center;
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+    margin-right:10px; 
+    margin-left: 20px;
+}
+
+.headings {
+    display: flex;
+    flex-direction: column;
+}
+
+#heading1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+#heading2 {
+    font-size: 18px; 
+    margin: 0;
+    text-align: left;
+}
+
+.content {
+    width: 90%;
+    max-width: 800px; 
+    flex-grow: 1; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container{
+    width: 350px; min-height: 400px;
+    background-color: white;
+    box-shadow: 0 0 10px 10px rgba(20, 11, 11, 0.428);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: space-between;
+}
+.nav, .btn{
+    height: 50px; outline: none; border: none; cursor: pointer;
+    width: 100%; display: flex; align-items: center;
+    justify-content: center;
+}
+.btn{
+    background-color: #525953;
+    transition: transform 80ms ease-in; font-size: 15px;
+    font-weight: 700; color: black;
+}
+#signUp{
+    display: none;
+    flex-direction: column;
+    transition: 0.2s linear;
+    position: absolute;
+}
+.btn1{
+    background-color: rgb(255, 255, 255);
+}
+#login{
+    display: flex;
+    flex-direction: column;
+    transition: 0.2s linear;
+    position: absolute;
+}
+.main{
+    height: 350px; width: 100%;
+    display: flex; align-items: center; justify-content: space-evenly;
+    border-radius: 4px;
+}
+.loginClass, .signupClass{
+    width: 350px;
+    display: flex; align-items: center; justify-content: center;
+}
+input[type="text"], input[type="password"], input[type="email"]{
+    width: 300px; outline: none; height: 30px; border: none;
+    border-bottom: 2px solid #4c564c; font-size: 15px;
+}
+input[type="text"]::placeholder, input[type="password"]::placeholder, input[type="email"]::placeholder{
+    color: #0c0e0c;
+}
+button{
+    background-color: #a8f591; width: 300px; border: none;
+    outline: none; cursor: pointer; height: 40px; color: black;
+    font-weight: 700; font-size: 15px;
+}
+.signBtn, .loginBtn{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.enquire{
+    display: flex; width: 300px;
+    justify-content: space-between; align-items: center;
+}
+a{
+    color: black;
+    text-decoration: none;
+}
+ .message{
+    margin-bottom: 5px;
+    font-size: smaller;
+ }
+ 
+ #signupForm{
+    line-height: 55px;
+ }
+ 
+.login-head{
+    line-height: 65px;
+   margin-bottom: 20px;
+   margin-top: -30px;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}

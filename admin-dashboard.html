@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin-dashboard</title>
+</head>
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<link href="admin-dashboard.css" rel="stylesheet">
+
+<body>
+    <!--Side navigation bar starts from here-->
+    <div class="sidebar">
+        <div class="logo-details">
+            <div class="logo_name">&nbsp &nbsp Welcome Admin</div>
+            <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <ul class="nav-list">
+            <li>
+                <a class="sidebar-item" href="#" onclick="openPage('registered-students.php')">
+                    <i class='bx bx-user bx-flashing-hover'></i>
+                    <span class="links_name">Students Registered</span>
+                </a>
+                <span class="tooltip">Students Registered</span>
+            </li>
+            <li>
+                <a class="sidebar-item" href="#" onclick="openPage('student-info.php')">
+                    <i class='bx bx-detail bx-flashing-hover'></i>
+                    <span class="links_name">Student Details</span>
+                </a>
+                <span class="tooltip">Student Details</span>
+            </li>
+            <li>
+                <a class="sidebar-item" href="#" onclick="openPage('student-preferences.php')">
+                    <i class='bx bx-task bx-flashing-hover'></i>
+                    <span class="links_name">Student Preferences</span>
+                </a>
+                <span class="tooltip">Student Preferences</span>
+            </li>
+            <li>
+                <a class="sidebar-item" href="#" onclick="openPage('results.php')">
+                    <i class='bx bx-bar-chart-alt-2 bx-flashing-hover'></i>
+                    <span class="links_name">Allotment Results</span>
+                </a>
+                <span class="tooltip">Allotment Results</span>
+            </li>
+            <li>
+                <a class="sidebar-item" href="#" onclick="openPage('seat_analysis.php')">
+                    <i class='bx bx-scatter-chart bx-flashing-hover'></i>
+                    <span class="links_name">Seat Analysis</span>
+                </a>
+                <span class="tooltip">Seat Analysis</span>
+            </li>
+            <li class="backtomainpage">
+                <a class="sidebar-item" href="#" onclick="showConfirmation()">
+                    <i class='bx bx-log-out' id="log_out"></i>
+                    <span class="links_name">Log Out</span>
+                </a>
+                <span class="tooltip">Log Out</span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Confirmation modal -->
+    <div id="confirmation-modal">
+        <p>Are you sure you want to log out?</p>
+        <button id="yes-bttn" onclick="startLoaderAndRedirect()">Yes</button>
+        <button onclick="cancelLogout()">Cancel</button>
+        <span class="loader" id="loading-spinner" scrolling="no"></span>
+    </div>
+
+
+    <div class="header">
+        <img id="logo" src="amulogo3.png">
+        <div class="heading">
+            <h1>Aligarh Muslim University</h1>
+            <h2>&nbsp Subject Allocation Portal</h2>
+        </div>
+        <div class="content">
+            <!-- Main content area -->
+            <iframe id="pageContent" scrolling="auto"></iframe>
+        </div>
+</body>
+<script>
+    let sidebar = document.querySelector(".sidebar");
+    let closeBtn = document.querySelector("#btn");
+    let searchBtn = document.querySelector(".bx-search");
+    closeBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("open");
+        menuBtnChange(); //calling the function(optional)
+    });
+    searchBtn.addEventListener("click", () => {
+        // Sidebar open when you click on the search icon
+        sidebar.classList.toggle("open");
+        menuBtnChange(); //calling the function(optional)
+    });
+    // following are the code to change sidebar button(optional)
+    function menuBtnChange() {
+        if (sidebar.classList.contains("open")) {
+            closeBtn.classList.replace("bx-menu", "bx-menu-alt-right"); //replacing the icons class
+        } else {
+            closeBtn.classList.replace("bx-menu-alt-right", "bx-menu"); //replacing the icons class
+        }
+    }
+
+    //function to open the page of respective icon
+    function openPage(pageUrl) {
+        document.getElementById('pageContent').src = pageUrl;
+    }
+
+    function showConfirmation() {
+        // Display the confirmation modal
+        document.getElementById('confirmation-modal').style.display = 'block';
+    }
+
+    //function to start loader during logout
+    function startLoaderAndRedirect() {
+        // Show loader immediately
+        document.getElementById('loading-spinner').style.display = 'block';
+
+        // Redirect to first_page after 2 seconds
+        setTimeout(function () {
+            window.location.href = 'first_page.php';
+        }, 2000);
+    }
+
+    function cancelLogout() {
+        // Hide the confirmation modal
+        document.getElementById('confirmation-modal').style.display = 'none';
+    }
+</script>
+
+</html>
