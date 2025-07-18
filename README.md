@@ -1,3 +1,5 @@
+**University Subject Allocation Portal**
+
 At present, universities often rely on manual or semi-automated methods for subject allocation, which are susceptible to errors, biases, and inefficiencies. These traditional approaches often entail extensive administrative overhead, leading to delays in allocation, disparities in resource distribution, and dissatisfaction among students and faculty. Moreover, the increasing complexity of academic programs, coupled with the growing number of students, exacerbates these challenges, rendering manual allocation methods increasingly untenable.
 The USAP project seeks to address these shortcomings by introducing a modern, web-based platform designed to revolutionize the subject allocation process. By leveraging cutting-edge technologies such as automation, data analytics, and user-friendly interfaces, USAP aims to streamline the allocation workflow, ensure fairness and transparency, and empower stakeholders with actionable insights for informed decision-making.
 In essence, the introduction of USAP represents a concerted effort to modernise and optimise the subject allocation process within universities, aligning with the broader objectives of academic excellence, efficiency, and student success.
@@ -10,7 +12,7 @@ Key features of the proposed system include:
 2. Transparency and Communication: Providing clear communication channels and dashboards for students and administrators to view allocation criteria, decisions, and allocation outcomes.
 3. Optimised Resource Utilisation: Utilising data analysis tools to optimise resource allocation, ensuring better alignment between student preferences and available subjects.
 4. Reduced Administrative Burden: Streamlining administrative workflows through automation, reducing manual data entry, and providing tools for efficient coordination and decision-making.
-5. Data-Driven Decision Making: Incorporating data analysis capabilities to provide administrators with insights into allocation trends, student preferences, and system performance, enabling proactive intervention and optimization.
+5. Data-Driven Decision Making: Incorporating data analysis capabilities to provide administrators with insights into allocation trends, student preferences, and system performance, enabling proactive intervention and optimisation.
 
 The University Subject Allocator Web Application finds application in various educational institutions, including but not limited to:
 1. Universities: Facilitating the allocation of Minor, Generic, VAC, and VOC subjects to newly admitted students.
